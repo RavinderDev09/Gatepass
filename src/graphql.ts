@@ -9,15 +9,26 @@
 /* eslint-disable */
 
 export class CreateVisitorInput {
-    exampleField?: Nullable<number>;
+    profileImg?: Nullable<string>;
+    mobileNO?: Nullable<number>;
+    name?: Nullable<string>;
+    email?: Nullable<string>;
 }
 
 export class UpdateVisitorInput {
     id: number;
+    profileImg?: Nullable<string>;
+    mobileNO?: Nullable<number>;
+    name?: Nullable<string>;
+    email?: Nullable<string>;
 }
 
 export class Visitor {
-    exampleField?: Nullable<number>;
+    id?: Nullable<string>;
+    profileImg?: Nullable<string>;
+    mobileNO?: Nullable<number>;
+    name?: Nullable<string>;
+    email?: Nullable<string>;
 }
 
 export abstract class IQuery {

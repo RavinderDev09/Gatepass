@@ -1,15 +1,24 @@
 type Visitor {
-  # Example field (placeholder)
-  exampleField: Int
+  id:String
+  profileImg:String
+  mobileNO:Int
+  name:String
+  email:String
 }
 
 input CreateVisitorInput {
-  # Example field (placeholder)
-  exampleField: Int
+  profileImg:String
+  mobileNO:Int
+  name:String
+  email:String
 }
 
 input UpdateVisitorInput {
   id: Int!
+  profileImg:String
+  mobileNO:Int
+  name:String
+  email:String
 }
 
 type Query {

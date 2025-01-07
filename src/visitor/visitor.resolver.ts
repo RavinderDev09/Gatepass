@@ -1,6 +1,7 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { VisitorService } from './visitor.service';
 
+
 @Resolver('Visitor')
 export class VisitorResolver {
   constructor(private readonly visitorService: VisitorService) {}
