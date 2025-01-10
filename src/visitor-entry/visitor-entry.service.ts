@@ -1,17 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { CreateVisitorEntryInput } from './dto/create-visitor-entry.input';
+import { CreateVisitorEntryInput, Purpose } from './dto/create-visitor-entry.input';
 import { UpdateVisitorEntryInput } from './dto/update-visitor-entry.input';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { VisitorEntry } from './entities/visitor-entry.entity';
+import { log } from 'console';
 
 @Injectable()
 export class VisitorEntryService {
 
   @InjectModel(VisitorEntry.name) private visitorEntryModel: Model<VisitorEntry>
 
-  create(createVisitorEntryInput: CreateVisitorEntryInput) {
-    return this.visitorEntryModel.create(createVisitorEntryInput);
+  async create(data: CreateVisitorEntryInput) {
+    log(data)
+    const result = await this.visitorEntryModel.create({
+      ...data,
+      inDateTime: data.inDateTime || new Date(), 
+            outDateTime: new Date(),
+          purpose: data.purpose|| Purpose.Other,});
+    console.log('result', result );
+    return result 
   }
 
   findAll() {

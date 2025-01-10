@@ -11,10 +11,18 @@ type Visitor {
 }
 
 type VisitorEntry {
+  id: ID!
+  purpose: Purpose!
   inDateTime: DateTime!
   outDateTime: DateTime!
   outRemark: String!
-  purpose: String!
+}
+
+"""The purpose of the visitor entry"""
+enum Purpose {
+  TakeAStudent
+  Official
+  Other
 }
 
 """
@@ -32,7 +40,7 @@ type Mutation {
   createVisitor(createVisitorInput: CreateVisitorInput!): Visitor!
   updateVisitor(updateVisitorInput: UpdateVisitorInput!): Visitor!
   removeVisitor(id: Int!): Visitor!
-  createVisitorEntry(createVisitorEntryInput: CreateVisitorEntryInput!): VisitorEntry!
+  createVisitorEntry(input: CreateVisitorEntryInput!): VisitorEntry!
   updateVisitorEntry(updateVisitorEntryInput: UpdateVisitorEntryInput!): VisitorEntry!
   removeVisitorEntry(id: Int!): VisitorEntry!
 }
@@ -53,16 +61,16 @@ input UpdateVisitorInput {
 }
 
 input CreateVisitorEntryInput {
-  inDateTime: String!
-  outDateTime: String!
+  inDateTime: DateTime!
+  outDateTime: DateTime
   outRemark: String!
-  purpose: String!
+  purpose: Purpose!
 }
 
 input UpdateVisitorEntryInput {
-  inDateTime: String
-  outDateTime: String
+  inDateTime: DateTime
+  outDateTime: DateTime
   outRemark: String
-  purpose: String
+  purpose: Purpose
   id: Int!
 }

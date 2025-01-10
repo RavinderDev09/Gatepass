@@ -2,6 +2,8 @@ import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
+export type VisitorDocument = Visitor & Document;
+
 @ObjectType() 
 @Schema({timestamps:true}) 
 export class Visitor {
@@ -21,6 +23,4 @@ export class Visitor {
   mobileNo:string
 }
 
-// Mongoose schema factory
-export type VisitorDocument = Visitor & Document;
-export const VisitorEntrySchema = SchemaFactory.createForClass(Visitor);
+export const VisitorSchema = SchemaFactory.createForClass(Visitor);

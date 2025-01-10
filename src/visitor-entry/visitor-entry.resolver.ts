@@ -8,9 +8,16 @@ import { UpdateVisitorEntryInput } from './dto/update-visitor-entry.input';
 export class VisitorEntryResolver {
   constructor(private readonly visitorEntryService: VisitorEntryService) {}
 
+  // @Mutation(() => VisitorEntry)
+  // createVisitorEntry(@Args('createVisitorEntryInput') createVisitorEntryInput: CreateVisitorEntryInput) {
+  //   return this.visitorEntryService.create(createVisitorEntryInput);
+  // }
+
   @Mutation(() => VisitorEntry)
-  createVisitorEntry(@Args('createVisitorEntryInput') createVisitorEntryInput: CreateVisitorEntryInput) {
-    return this.visitorEntryService.create(createVisitorEntryInput);
+  async createVisitorEntry(
+    @Args('input') input: CreateVisitorEntryInput,
+  ): Promise<VisitorEntry> {
+    return this.visitorEntryService.create(input);
   }
 
   @Query(() => [VisitorEntry], { name: 'visitorEntry' })
